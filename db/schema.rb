@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_06_231122) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_06_232200) do
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "name", null: false
@@ -24,4 +24,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_231122) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "tasks", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "name", limit: 50
+    t.string "description", limit: 140
+    t.boolean "completed", null: false
+    t.date "due_date"
+    t.integer "priority", default: 0, null: false
+    t.bigint "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_tasks_on_member_id"
+  end
+
+  add_foreign_key "tasks", "members"
 end
