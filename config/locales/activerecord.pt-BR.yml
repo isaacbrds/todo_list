@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    attributes:
+      member:
+        name: Nome
+        email: E-mail 
+        password: Senha
+        password_confirmation: Confirme sua senha
+        remember_me: lembrar
+      task:
+        name: Nome
+        description: Descrição
+        completed: Finalizado
+        due_date: Data de Término
+        priority: Prioridade
+    errors:
+      models:
+        task:
+          blank: 'Não pode ser vazio'
+      messages:
+        blank: 'Não pode ser vazio'
