@@ -1,5 +1,10 @@
 class TasksController < ApplicationController
-    before_action :set_task, only: %i[edit update]
+    before_action :set_task, only: %i[edit update destroy]
+
+    def index
+        @tasks = Task.all
+    end
+
     def new
         @task = Task.new
     end
@@ -32,11 +37,20 @@ class TasksController < ApplicationController
           end
     end
 
+    def destroy 
+        @task.destroy!
+        respond_to do |format|
+            format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
+            format.json { head :no_content }
+        end
+    end
+
     private
 
     def set_task
         @task = Task.find(params[:id])
     end
+
     def task_params
         params.require(:task).permit(:name, :description, :completed, :priority)
     end
