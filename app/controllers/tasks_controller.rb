@@ -48,8 +48,9 @@ class TasksController < ApplicationController
                 format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
                 format.json { head :no_content }
             end
+        else
+            redirect_to tasks_path, notice: "You don't have permission to do this action"  
         end
-        redirect_to tasks_path, notice: "You don't have permission to do this action"  
     end
 
     private
