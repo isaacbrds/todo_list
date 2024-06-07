@@ -1,24 +1,63 @@
-# README
+# Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Sobre este projeto
 
-Things you may want to cover:
+Este é um projeto para construir uma aplicação simples, permitindo que os usuários gerenciem e controlem suas tarefas. 
 
-* Ruby version
+# Tecnologias Utilizadas
 
-* System dependencies
+## Backend
+- Ruby 
+- Rails 
+- MySQL
 
-* Configuration
+## Frontend
 
-* Database creation
+- HTML 
+- CSS 
+- Bootstrap 
 
-* Database initialization
+# Requisitos
+- Ruby 3.3.0
+- Ruby on Rails 7.1.3
 
-* How to run the test suite
+## Backend
 
-* Services (job queues, cache servers, search engines, etc.)
+### Dependências
+- devise
+- rspec
+- factory_bot_rails
+- faker
+- shoulda-matchers 
 
-* Deployment instructions
 
-* ...
+## Frontend
+
+### Dependências
+
+- Bootstrap 
+
+# Como executar este projeto
+
+```bash
+# clone o repositório
+git clone https://github.com/isaacbrds/todo_list.git 
+
+# acesse a pasta
+cd todo_list
+
+# Instale as gems
+bundle install
+
+# Crie o banco de dados
+rails db:create db:prepare db:migrate
+
+```
+
+# Como testar este projeto
+
+```bash 
+
+# Run rspec 
+
+rspec
