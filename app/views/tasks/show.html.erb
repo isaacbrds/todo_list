@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+<div>
+  <p>
+    <strong>Name:</strong>
+    <%= @task.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @task.description %>
+  </p>
+
+  <p>
+    <strong>Completed:</strong>
+    <%= @task.completed %>
+  </p>
+
+  <p>
+    <strong>Due date:</strong>
+    <%= @task.due_date %>
+  </p>
+
+  <p>
+    <strong>Priority:</strong>
+    <%= @task.priority %>
+  </p>
+
+  <p>
+    <strong>Member:</strong>
+    <%= @task.member_id %>
+  </p>
+
+</div>
+
+<div>
+  <%= link_to "Edit this task", edit_task_path(@task) %> |
+  <%= link_to "Back to tasks", tasks_path %>
+
+  <%= button_to "Destroy this task", @task, method: :delete %>
+</div>

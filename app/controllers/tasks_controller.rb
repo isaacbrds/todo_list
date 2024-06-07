@@ -1,9 +1,11 @@
 class TasksController < ApplicationController
-    before_action :set_task, only: %i[edit update destroy]
+    before_action :set_task, only: %i[edit show update destroy]
 
     def index
         @tasks = Task.all
     end
+
+    def show;end 
 
     def new
         @task = Task.new
@@ -23,7 +25,9 @@ class TasksController < ApplicationController
         end
     end
 
-    def edit;end
+    def edit
+        redirect_to tasks_path, notice: "You don't have permission to do this action"  unless @task.member == current_member
+    end
 
     def update
         respond_to do |format|
@@ -38,11 +42,14 @@ class TasksController < ApplicationController
     end
 
     def destroy 
-        @task.destroy!
-        respond_to do |format|
-            format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
-            format.json { head :no_content }
+        if @task.member == current_member
+            @task.destroy!
+            respond_to do |format|
+                format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
+                format.json { head :no_content }
+            end
         end
+        redirect_to tasks_path, notice: "You don't have permission to do this action"  
     end
 
     private
