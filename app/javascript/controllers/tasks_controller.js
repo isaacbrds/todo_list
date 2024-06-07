@@ -102,6 +102,9 @@ export default class extends Controller {
     titleInput.type = 'checkbox';
     titleInput.id = 'task_completed';
     titleInput.checked = task.completed;
+    if(task.completed){
+      titleInput.setAttribute('disabled', 'disabled');
+    }
     titleDiv.appendChild(titleLabel);
     titleDiv.appendChild(titleInput);
     const submitButton = document.createElement('button');
