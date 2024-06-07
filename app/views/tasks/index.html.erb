@@ -1,0 +1,47 @@
+<div class="mt-3 d-grid gap-2 d-md-flex justify-content-md-evenly align-items-center">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tarefas</li>
+            </ol>
+        </nav>
+        <h3> Lista de Tarefas </h3> 
+        <%= link_to 'new', new_task_path %>
+    </div>
+    <hr>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Prioridade</th>
+                <th>Finalizada</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+                <% @tasks.each do |task| %>
+                <tr>
+                    <td><%= task.id %></td>
+                    <td><button data-action="click->tasks#show" data-task='JSON.stringify(task.id)'><%= task.name %></button></td>
+                    <td><%= task.priority %></td>
+                    <td><%= task.completed %></td>
+                    <td>
+                    <%= link_to 'edit', edit_task_path(task) %>
+                    <%= button_to "Destroy this task", task, method: :delete %>
+                    </td>
+                </tr>
+                <% end %>
+        </tbody>
+    </table>
+
+    <div id='show-description'> 
+        <div class="card">
+            <h5 class="card-header" id='tarefa-nome'></h5>
+            <div class="card-body">
+                <p class="card-text" id='tarefa-descricao'>Clique no nome para obter a descrição da tarefa</p>
+                <a href="#" id='link-editar'></a>
+                <a href="#" id='link-excluir'></a>
+            </div>
+        </div>
+    </div>
