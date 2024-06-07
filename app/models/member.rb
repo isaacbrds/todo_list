@@ -7,5 +7,5 @@ class Member < ApplicationRecord
   validates :email, uniqueness: true
   validates :name, length: { minimum: 5 }
   validates :password, length: { minimum: 3 }
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 end

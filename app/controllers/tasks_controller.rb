@@ -26,7 +26,8 @@ class TasksController < ApplicationController
     end
 
     def edit
-        redirect_to tasks_path, notice: "You don't have permission to do this action"  unless @task.member == current_member
+        redirect_to tasks_path, alert: "You don't have permission to do this action"  unless @task.member == current_member
+        redirect_to tasks_path, alert: "this task was completed!"  if @task.completed
     end
 
     def update
@@ -42,7 +43,8 @@ class TasksController < ApplicationController
     end
 
     def destroy 
-        if @task.member == current_member
+        if @task.member == current_member && !@task.completed
+            debugger
             @task.destroy!
             respond_to do |format|
                 format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }

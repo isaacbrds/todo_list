@@ -11,6 +11,6 @@ class Task < ApplicationRecord
   
   def check_completed
     #debugger
-    puts 'completão' if self.completed.present?
+    self.due_date = Time.now if self.completed.present?
   end
 end

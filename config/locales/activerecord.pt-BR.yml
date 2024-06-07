@@ -7,6 +7,7 @@ pt-BR:
         password: Senha
         password_confirmation: Confirme sua senha
         remember_me: lembrar
+          
       task:
         name: Nome
         description: Descrição
@@ -19,3 +20,4 @@ pt-BR:
           blank: 'Não pode ser vazio'
       messages:
         blank: 'Não pode ser vazio'
+        too_short: "é muito curto (mínimo de %{count} caracteres)"

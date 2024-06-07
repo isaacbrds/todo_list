@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_232200) do
     t.string "name", limit: 50
     t.string "description", limit: 140
     t.boolean "completed", default: false, null: false
-    t.date "due_date"
+    t.datetime "due_date"
     t.integer "priority", default: 0, null: false
     t.bigint "member_id", null: false
     t.datetime "created_at", null: false
