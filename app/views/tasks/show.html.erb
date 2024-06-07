@@ -1,40 +1,43 @@
 <p style="color: green"><%= notice %></p>
-<div>
+<div class='container'>
+  <h3>Detalhes da tarefa</h3>
   <p>
-    <strong>Name:</strong>
+    <strong>Nome:</strong>
     <%= @task.name %>
   </p>
 
   <p>
-    <strong>Description:</strong>
+    <strong>Descrição:</strong>
     <%= @task.description %>
   </p>
 
   <p>
-    <strong>Completed:</strong>
-    <%= @task.completed %>
+    <strong>Finalizada? </strong>
+    <%= @task.completed ? "Sim" : "Não" %>
   </p>
 
   <p>
-    <strong>Due date:</strong>
-    <%= @task.due_date.strftime("%d/%m/%Y %H:%M:%S") %>
+    <strong>Data de Término:</strong>
+    <% if @task.due_date.present? %>
+      <%= @task.due_date.strftime("%d/%m/%Y %H:%M:%S") %>
+    <% end %>
   </p>
 
   <p>
-    <strong>Priority:</strong>
+    <strong>Prioridade:</strong>
     <%= @task.priority %>
   </p>
 
   <p>
-    <strong>Member:</strong>
+    <strong>Código do Membro:</strong>
     <%= @task.member_id %>
   </p>
-
-</div>
-
 <div>
-  <%= link_to "Edit this task", edit_task_path(@task) %> |
-  <%= link_to "Back to tasks", tasks_path %>
+  <%= link_to t("Edit"), edit_task_path(@task) %> |
+  <%= link_to t("back"), tasks_path %>
 
-  <%= button_to "Destroy this task", @task, method: :delete %>
+  
 </div>
+</div>
+
+

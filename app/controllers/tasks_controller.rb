@@ -16,7 +16,7 @@ class TasksController < ApplicationController
         @task.member = current_member
         respond_to do |format|
             if @task.save
-                format.html { redirect_to tasks_path, notice: "Task was successfully created." }
+                format.html { redirect_to tasks_path, notice: t("Task was successfully created!") }
                 format.json { render :show, status: :created, location: @task }
             else
                 format.html { render :new, status: :unprocessable_entity }
@@ -26,14 +26,14 @@ class TasksController < ApplicationController
     end
 
     def edit
-        redirect_to tasks_path, alert: "You don't have permission to do this action"  unless @task.member == current_member
-        redirect_to tasks_path, alert: "this task was completed!"  if @task.completed
+        redirect_to tasks_path, alert: t("You don't have permission to do this action")  unless @task.member == current_member
+        redirect_to tasks_path, alert: t("this task was completed!")  if @task.completed
     end
 
     def update
         respond_to do |format|
             if @task.update(task_params)
-              format.html { redirect_to task_url(@task), notice: "Task was successfully updated." }
+              format.html { redirect_to task_url(@task), notice: t("Task was successfully updated!") }
               format.json { render :show, status: :ok, location: @task }
             else
               format.html { render :edit, status: :unprocessable_entity }
@@ -44,14 +44,13 @@ class TasksController < ApplicationController
 
     def destroy 
         if @task.member == current_member && !@task.completed
-            debugger
             @task.destroy!
             respond_to do |format|
-                format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
+                format.html { redirect_to tasks_url, notice: t("Task was successfully destroyed!") }
                 format.json { head :no_content }
             end
         else
-            redirect_to tasks_path, notice: "You don't have permission to do this action"  
+            redirect_to tasks_path, alert: t("You don't have permission to do this action")  
         end
     end
 

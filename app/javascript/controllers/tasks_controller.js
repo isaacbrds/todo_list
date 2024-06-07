@@ -83,11 +83,7 @@ export default class extends Controller {
     }
   }
 
-  async save(event){
-    event.preventDefault();
-    console.log('salvando');
-  }
-
+  
   createForm(task, csrfToken){
     const form = document.createElement('form');
     // Cria o campo oculto (hidden input)
@@ -129,8 +125,13 @@ export default class extends Controller {
       const url = `http://localhost:3000/tasks/${task.id}.json`;
     
       const data = await (await fetch(url, requestOptions)).json();
+      setTimeout(function() {
+      
+        window.location.reload();
+      }, 1000);
     })
 
+    
     return form;
   }
 }

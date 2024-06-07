@@ -21,3 +21,4 @@ pt-BR:
       messages:
         blank: 'Não pode ser vazio'
         too_short: "é muito curto (mínimo de %{count} caracteres)"
+        record_invalid: "A validação falhou: %{errors}"
