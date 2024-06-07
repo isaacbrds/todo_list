@@ -10,29 +10,29 @@
     </div>
     <hr>
     <table class='table'>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Prioridade</th>
-                <th>Finalizada</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-                <% @tasks.each do |task| %>
-                <tr>
-                    <td><%= task.id %></td>
-                    <td><button data-action="click->tasks#show" data-task='JSON.stringify(task.id)'><%= task.name %></button></td>
-                    <td><%= task.priority %></td>
-                    <td><%= task.completed %></td>
-                    <td>
-                    <%= link_to t('Edit'), edit_task_path(task), class: 'btn btn-warning' %>
-                    <%= link_to t("Destroy"),task_path(task), data: { "turbo-method": :delete }, class: 'btn btn-danger'  %>
-                    </td>
-                </tr>
-                <% end %>
-        </tbody>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Prioridade</th>
+        <th>Finalizada</th>
+        <th>Ações</th>
+    </tr>
+</thead>
+<tbody>
+        <% @tasks.each do |task| %>
+        <tr>
+            <td><%= task.id %></td>
+            <td><button data-action="click->tasks#show" data-task='JSON.stringify(task.id)'><%= task.name %></button></td>
+            <td><%= task.priority %></td>
+            <td><%= task.completed %></td>
+            <td>
+            <%= link_to t('Edit'), edit_task_path(task), class: 'btn btn-warning' %>
+            <%= link_to t("Destroy"),task_path(task), data: { "turbo-method": :delete }, class: 'btn btn-danger'  %>
+            </td>
+        </tr>
+        <% end %>
+</tbody>
     </table>
 
     <div id='show-description'> 

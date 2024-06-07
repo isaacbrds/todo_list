@@ -1,0 +1,38 @@
+<div class="mt-3 d-grid gap-2 d-md-flex justify-content-md-evenly align-items-center">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Membros</li>
+            </ol>
+        </nav>
+        <h3> Lista de Membros </h3> 
+        <span></span>
+    </div>
+    <hr>
+    <table class='table'>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+        <% @members.each do |member| %>
+        <tr>
+            <td><%= member.id %></td>
+            <td><%= member.name %></td>
+            <td><%= member.email %></td>
+            <td>
+            <% if current_member.id == member.id %>
+                <%= link_to t('show'), member_path(current_member), class: "btn btn-info" %>
+                <%= link_to t('edit'), edit_member_registration_path(current_member), class: "btn btn-warning" %>
+                <%= link_to 'Excluir', registration_path(current_member), data: { turbo_confirm: 'Você tem certeza? ', "turbo-method": :delete },class: "btn btn-danger"  %>
+                
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
