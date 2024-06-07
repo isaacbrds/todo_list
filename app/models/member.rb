@@ -6,6 +6,6 @@ class Member < ApplicationRecord
   validates :name, :email, presence: true
   validates :email, uniqueness: true
   validates :name, length: { minimum: 5 }
-
+  validates :password, length: { minimum: 3 }
   has_many :tasks
 end
