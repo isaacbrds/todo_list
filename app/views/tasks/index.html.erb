@@ -6,10 +6,13 @@
             </ol>
         </nav>
         <h3> Lista de Tarefas </h3> 
+        <div style="display:none;" id="current_member">
+		    <%= current_member.id %>
+	    </div>
         <%= link_to 'new', new_task_path %>
     </div>
     <hr>
-    <table class='table'>
+    <table class='table' data-controller='tasks'>
     <thead>
     <tr>
         <th>ID</th>
@@ -23,7 +26,7 @@
         <% @tasks.each do |task| %>
         <tr>
             <td><%= task.id %></td>
-            <td><button data-action="click->tasks#show" data-task='JSON.stringify(task.id)'><%= task.name %></button></td>
+            <td><button data-action="click->tasks#show" data-task='<%= task.id%>'><%= task.name %></button></td>
             <td><%= task.priority %></td>
             <td><%= task.completed %></td>
             <td>
@@ -40,8 +43,13 @@
             <h5 class="card-header" id='tarefa-nome'></h5>
             <div class="card-body">
                 <p class="card-text" id='tarefa-descricao'>Clique no nome para obter a descrição da tarefa</p>
-                <a href="#" id='link-editar'></a>
-                <a href="#" id='link-excluir'></a>
+                <br/>
+                <div id='form-to-include'>
+                </div>
+                <div>
+                    <a href="#" id='link-editar'></a>
+                    <a href="#" id='link-excluir'></a>
+                </div>
             </div>
         </div>
     </div>
